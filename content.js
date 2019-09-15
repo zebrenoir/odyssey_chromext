@@ -1,11 +1,11 @@
 function getQuestsStats() {
 
-    console.log("Counting quests...");
+    console.log("Extension running...")
     labels = document.getElementsByClassName("ui blue horizontal label");
 
-    var totalQuests = labels.length;
-    var endedQuests = 0;
-    var pendingQuests = 0;
+    let totalQuests = labels.length;
+    let endedQuests = 0;
+    let pendingQuests = 0;
 
     for (let i = 0; i < labels.length; i++) {
 
@@ -20,10 +20,6 @@ function getQuestsStats() {
         }
 
     }
-        console.log("Nombre de quêtes au total : " + totalQuests);
-        console.log("Nombre de quêtes terminées : " + endedQuests);
-        console.log("Nombre de quêtes en cours : " + pendingQuests);
-        
         let quests = {
             "totalQuests": totalQuests,
             "endedQuests": endedQuests,
@@ -38,8 +34,7 @@ function getQuestsStats() {
 
     const quests = getQuestsStats();
     const filterArea = document.getElementsByClassName("filter-area");
-    filterArea[0].style.paddingLeft = "0";
-    filterArea[0].style.paddingRight = "0";
+    filterArea[0].style.padding = "0";
     filterArea[0].style.color = "white";
 
     let totalElement = document.createElement("p");
@@ -48,7 +43,8 @@ function getQuestsStats() {
 
     totalElementContent = document.createTextNode("Nombre de quêtes au total : " + quests.totalQuests);
     totalElement.appendChild(totalElementContent);
-    totalElement.style.backgroundColor = "#f76c6c";
+    totalElement.style.backgroundColor = "white";
+    totalElement.style.color = "#f76c6c";
     totalElement.style.padding = "20px 30px";
     totalElement.style.fontWeight = "bold";
     totalElement.style.margin = "0";
@@ -56,7 +52,7 @@ function getQuestsStats() {
 
     endedElementContent = document.createTextNode("Nombre de quêtes terminées : " + quests.endedQuests);
     endedElement.appendChild(endedElementContent);
-    endedElement.style.backgroundColor = "lime";
+    endedElement.style.backgroundColor = "#aaffaa";
     endedElement.style.color = "green";
     endedElement.style.padding = "20px 30px";
     endedElement.style.fontWeight = "bold";
@@ -65,7 +61,9 @@ function getQuestsStats() {
 
     pendingElementContent = document.createTextNode("Nombre de quêtes en cours : " + quests.pendingQuests);
     pendingElement.appendChild(pendingElementContent);
-    pendingElement.style.backgroundColor = "orange";
+    pendingElement.style.backgroundColor = "#fecb6d";
+    pendingElement.style.color = "#a96d00";
+    
     pendingElement.style.padding = "20px 30px";
     pendingElement.style.fontWeight = "bold";
     filterArea[0].appendChild(pendingElement);
@@ -73,5 +71,5 @@ function getQuestsStats() {
 })();
 
 /*
-TODO: Créer un système de classes pour styliser les nouveaux éléments
+TODO: Créer un système de classes CSS pour styliser les nouveaux éléments
 */
