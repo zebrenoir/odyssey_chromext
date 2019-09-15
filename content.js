@@ -69,7 +69,3 @@ function getQuestsStats() {
     filterArea[0].appendChild(pendingElement);
 
 })();
-
-/*
-TODO: Créer un système de classes CSS pour styliser les nouveaux éléments
-*/
