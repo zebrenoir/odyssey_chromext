@@ -1,11 +1,3 @@
-/*
-(function() {
-    console.log("We're changing the world here, baby doll!");
-    div = document.getElementsByTagName("div");
-    div[0].style.backgroundColor = "lightpink";
-})();
-*/
-
 function getQuestsStats() {
 
     console.log("Counting quests...");
@@ -45,14 +37,41 @@ function getQuestsStats() {
 (function() {
 
     const quests = getQuestsStats();
-    let newElement = document.createElement("p");
-    newElementContent = document.createTextNode("Nombre de quêtes au total : " + quests.totalQuests);
-    newElement.style.backgroundColor = "lightgreen";
-    newElement.style.padding = "15px";
-    newElement.appendChild(newElementContent);
-
-
     const filterArea = document.getElementsByClassName("filter-area");
-    filterArea[0].appendChild(newElement);
+    filterArea[0].style.paddingLeft = "0";
+    filterArea[0].style.paddingRight = "0";
+    filterArea[0].style.color = "white";
+
+    let totalElement = document.createElement("p");
+    let endedElement = document.createElement("p");
+    let pendingElement = document.createElement("p");
+
+    totalElementContent = document.createTextNode("Nombre de quêtes au total : " + quests.totalQuests);
+    totalElement.appendChild(totalElementContent);
+    totalElement.style.backgroundColor = "#f76c6c";
+    totalElement.style.padding = "20px 30px";
+    totalElement.style.fontWeight = "bold";
+    totalElement.style.margin = "0";
+    filterArea[0].appendChild(totalElement);
+
+    endedElementContent = document.createTextNode("Nombre de quêtes terminées : " + quests.endedQuests);
+    endedElement.appendChild(endedElementContent);
+    endedElement.style.backgroundColor = "lime";
+    endedElement.style.color = "green";
+    endedElement.style.padding = "20px 30px";
+    endedElement.style.fontWeight = "bold";
+    endedElement.style.margin = "0";
+    filterArea[0].appendChild(endedElement);
+
+    pendingElementContent = document.createTextNode("Nombre de quêtes en cours : " + quests.pendingQuests);
+    pendingElement.appendChild(pendingElementContent);
+    pendingElement.style.backgroundColor = "orange";
+    pendingElement.style.padding = "20px 30px";
+    pendingElement.style.fontWeight = "bold";
+    filterArea[0].appendChild(pendingElement);
 
 })();
+
+/*
+TODO: Créer un système de classes pour styliser les nouveaux éléments
+*/
