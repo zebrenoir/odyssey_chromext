@@ -6,31 +6,53 @@
 })();
 */
 
-(function() {
+function getQuestsStats() {
 
-    console.log("Counting quests");
+    console.log("Counting quests...");
     labels = document.getElementsByClassName("ui blue horizontal label");
-    
-    var total_quests = labels.length;
-    var ended_quests = 0;
-    var pending_quests = 0;
+
+    var totalQuests = labels.length;
+    var endedQuests = 0;
+    var pendingQuests = 0;
 
     for (let i = 0; i < labels.length; i++) {
 
-        let label_content = labels[i].textContent;
+        let labelContent = labels[i].textContent;
 
-        for (let j = 0; j < label_content.length; j++) {            
-            if (label_content[j] == "T") {
-                ended_quests += 1;
-            } else if (label_content[j] == "E") {
-                pending_quests += 1;
+        for (let j = 0; j < labelContent.length; j++) {            
+            if (labelContent[j] == "T") {
+                endedQuests += 1;
+            } else if (labelContent[j] == "E") {
+                pendingQuests += 1;
             }
         }
 
     }
-        console.log("Nombre de quêtes au total : " + total_quests);
-        console.log("Nombre de quêtes terminées : " + ended_quests);
-        console.log("Nombre de quêtes en cours : " + pending_quests);
-    
-    
+        console.log("Nombre de quêtes au total : " + totalQuests);
+        console.log("Nombre de quêtes terminées : " + endedQuests);
+        console.log("Nombre de quêtes en cours : " + pendingQuests);
+        
+        let quests = {
+            "totalQuests": totalQuests,
+            "endedQuests": endedQuests,
+            "pendingQuests": pendingQuests
+        }
+
+        return quests;
+
+};
+
+(function() {
+
+    const quests = getQuestsStats();
+    let newElement = document.createElement("p");
+    newElementContent = document.createTextNode("Nombre de quêtes au total : " + quests.totalQuests);
+    newElement.style.backgroundColor = "lightgreen";
+    newElement.style.padding = "15px";
+    newElement.appendChild(newElementContent);
+
+
+    const filterArea = document.getElementsByClassName("filter-area");
+    filterArea[0].appendChild(newElement);
+
 })();
